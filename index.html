@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HARAKIRI HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <style>
-        /* CSS will be in next block */
-    </style>
+    <title>Eastern European Links</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="glitch-container">
-        <h1 class="glitch" data-text="刃折りハブ">HARAKIRI HUB</h1>
-        <p>// 断絶されたデジタル道場</p>
-    </header>
+    <h1>Eastern European Links</h1>
+    <ul id="linkList">
+        <li><a href="https://example.com/recipes">Eastern European Recipes</a></li>
+        <li><a href="https://example.com/gallery">Folk Art Gallery</a></li>
+        <li><a href="https://example.com/travel">Travel in Eastern Europe</a></li>
+    </ul>
 
-    <div class="container">
-        <section class="links">
-            <a href="#" class="cyber-link">刃_BLOOD_LINKS</a>
-            <a href="#" class="cyber-link">折_ARCHIVES</a>
-            <a href="#" class="cyber-link">り_SECRETS</a>
-        </section>
-
-        <div class="terminal">
-            <input type="password" id="passcode" placeholder="ENTER ACCESS CODE...">
-            <button onclick="unlockComments()">暗号解除</button>
+    <div id="commentSection">
+        <h2>Comments</h2>
+        <div id="comments"></div>
+        <div id="commentForm" style="display: none;">
+            <textarea id="commentInput" rows="4" cols="50"></textarea><br>
+            <button id="postComment">Post</button>
         </div>
-
-        <section id="commentSection" class="hidden">
-            <div id="comments"></div>
-            <textarea id="newComment" placeholder="血文字を刻め..."></textarea>
-            <button onclick="postComment()">POST</button>
-        </section>
+        <div id="loginForm">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="loginButton">Login</button>
+        </div>
+        <button id="showComments" style="display: none;">Show Comments</button>
     </div>
 
-    <script>
-        // JavaScript will be in final block
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
