@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberCore</title>
+    <title>CyberNexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --neon-cyan: #0ff;
             --dark-bg: #0a0a0a;
             --cyber-border: 1px solid var(--neon-cyan);
+            --cyber-shadow: 0 0 15px var(--neon-cyan);
         }
 
         * {
@@ -34,119 +36,216 @@
         .cyber-header {
             text-align: center;
             padding: 2rem 0;
-            border-bottom: var(--cyber-border);
             margin-bottom: 3rem;
-            text-shadow: 0 0 10px var(--neon-cyan);
-        }
-
-        .telegram-feed {
-            border: var(--cyber-border);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .message {
-            padding: 1rem;
-            border-left: 3px solid var(--neon-cyan);
-            margin: 1rem 0;
-            background: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.05));
-        }
-
-        .glow {
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 5px var(--neon-cyan); }
-            to { text-shadow: 0 0 20px var(--neon-cyan); }
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        a {
-            color: var(--neon-cyan);
-            text-decoration: none;
             position: relative;
         }
 
-        a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--neon-cyan);
-            transition: width 0.3s;
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: var(--cyber-border);
+            box-shadow: var(--cyber-shadow);
+            margin: 1rem auto;
+            background: url('https://via.placeholder.com/150') center/cover;
+            position: relative;
+            transition: transform 0.3s;
         }
 
-        a:hover::after {
+        .avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .cyber-title {
+            text-shadow: 0 0 10px var(--neon-cyan);
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .cyber-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: var(--neon-cyan);
+            box-shadow: var(--cyber-shadow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .cyber-card {
+            border: var(--cyber-border);
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: box-shadow 0.3s;
+        }
+
+        .cyber-card:hover {
+            box-shadow: var(--cyber-shadow);
+        }
+
+        .links-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .cyber-link {
+            padding: 1rem;
+            border: var(--cyber-border);
+            text-align: center;
+            text-decoration: none;
+            color: var(--neon-cyan);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .cyber-link:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .cyber-link::before {
+            content: '>';
+            position: absolute;
+            left: -20px;
+            transition: left 0.3s;
+        }
+
+        .cyber-link:hover::before {
+            left: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--neon-cyan);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                transparent 50%,
+                rgba(0, 255, 255, 0.05) 51%,
+                transparent 51%);
+            pointer-events: none;
+            animation: scanline 5s linear infinite;
+            z-index: 999;
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
             }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="scanline"></div>
     <div class="container">
         <header class="cyber-header">
-            <h1 class="glow">CYBER//CORE</h1>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#feed">Feed</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <div class="avatar"></div>
+            <h1 class="cyber-title">CYBER_NEXUS</h1>
+            <p>// Security Engineer & Cybernetic Systems Architect</p>
         </header>
 
-        <section id="about">
-            <h2>> about.dat</h2>
-            <p>Welcome to the encrypted nexus. We are the digital resistance.</p>
-            <p>Operating in the shadows since 2077. Specializing in cyber security, neural networks, and decentralized systems.</p>
-        </section>
+        <section class="grid">
+            <div class="cyber-card">
+                <h2>> bio.txt</h2>
+                <p>01000110 01110010 01101111 01101101 00100000 01110100 01101000 01100101 00100000 01100100 01101001 01100111 01101001 01110100 01100001 01101100 00100000 01110011 01101000 01100001 01100100 01101111 01110111 01110011</p>
+                <p>Specializing in neural security systems and quantum encryption protocols. 10+ years experience in black hat rehabilitation and cyber warfare defense.</p>
+            </div>
 
-        <section id="feed">
-            <h2>> live_feed.telegram</h2>
-            <div class="telegram-feed" id="telegram-feed">
-                <!-- Messages will be loaded here -->
+            <div class="cyber-card">
+                <h2>> skills.dat</h2>
+                <ul class="skill-list">
+                    <li>Quantum Cryptography</li>
+                    <li>Neural Interface Security</li>
+                    <li>AI Containment Systems</li>
+                    <li>Blockchain Forensics</li>
+                    <li>Zero-Day Exploit Mitigation</li>
+                </ul>
             </div>
         </section>
+
+        <section class="cyber-card">
+            <h2>> network_links</h2>
+            <div class="links-section">
+                <a href="#portfolio" class="cyber-link">Portfolio Matrix</a>
+                <a href="#research" class="cyber-link">Research Papers</a>
+                <a href="#blog" class="cyber-link">Encrypted Blog</a>
+                <a href="#contact" class="cyber-link">Secure Contact</a>
+            </div>
+        </section>
+
+        <section class="cyber-card">
+            <h2>> system_status</h2>
+            <div class="links-section">
+                <div class="cyber-link">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Firewall: Active</p>
+                </div>
+                <div class="cyber-link">
+                    <i class="fas fa-network-wired"></i>
+                    <p>VPN: Encrypted</p>
+                </div>
+                <div class="cyber-link">
+                    <i class="fas fa-lock"></i>
+                    <p>System: Secure</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="social-links">
+            <a href="#github"><i class="fab fa-github"></i></a>
+            <a href="#linkedin"><i class="fab fa-linkedin"></i></a>
+            <a href="#keybase"><i class="fas fa-key"></i></a>
+            <a href="#signal"><i class="fas fa-comment-dots"></i></a>
+        </div>
     </div>
-
-    <script>
-        // Telegram feed configuration
-        const TELEGRAM_CHANNEL = '@yourchannelname';
-        const MESSAGE_LIMIT = 10;
-
-        async function fetchTelegramMessages() {
-            try {
-                const response = await fetch(`/telegram-feed?channel=${TELEGRAM_CHANNEL}&limit=${MESSAGE_LIMIT}`);
-                const messages = await response.json();
-                
-                const feedContainer = document.getElementById('telegram-feed');
-                feedContainer.innerHTML = messages.map(msg => `
-                    <div class="message">
-                        <div class="message-time">[${new Date(msg.date).toLocaleString()}]</div>
-                        <div class="message-text">${msg.text}</div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error('Error fetching Telegram messages:', error);
-            }
-        }
-
-        // Fetch messages every 30 seconds
-        fetchTelegramMessages();
-        setInterval(fetchTelegramMessages, 30000);
-    </script>
 </body>
 </html>
