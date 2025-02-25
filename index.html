@@ -3,89 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Site Title] - Link Hub</title>
+    <title>HARAKIRI HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: monospace, monospace;
-            background-color: #1a1a1a;
-            color: #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 90%;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .link-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .link-item {
-            margin-bottom: 15px;
-        }
-
-        .link-item a {
-            display: inline-block;
-            background-color: #333;
-            color: #eee;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            width: calc(100% - 40px);
-            box-sizing: border-box;
-        }
-
-        .link-item a:hover {
-            background-color: #555;
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 0.8em;
-            color: #777;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-            .link-item a {
-                padding: 8px 15px;
-            }
-        }
-
-        /* Custom Styles (Add your own styles here) */
-        /* Example: Change the link color */
-        /* .link-item a { color: #88f; } */
+        /* CSS will be in next block */
     </style>
 </head>
 <body>
+    <header class="glitch-container">
+        <h1 class="glitch" data-text="刃折りハブ">HARAKIRI HUB</h1>
+        <p>// 断絶されたデジタル道場</p>
+    </header>
+
     <div class="container">
-        <h1>[Site Title]</h1>
-        <ul class="link-list">
-            <li class="link-item"><a href="[Link URL]" target="_blank">[Link Text]</a></li>
-            <li class="link-item"><a href="[Link URL]" target="_blank">[Link Text]</a></li>
-            <li class="link-item"><a href="[Link URL]" target="_blank">[Link Text]</a></li>
-        </ul>
-        <div class="footer">
-            &copy; [Your Name/Handle] - [Year]
+        <section class="links">
+            <a href="#" class="cyber-link">刃_BLOOD_LINKS</a>
+            <a href="#" class="cyber-link">折_ARCHIVES</a>
+            <a href="#" class="cyber-link">り_SECRETS</a>
+        </section>
+
+        <div class="terminal">
+            <input type="password" id="passcode" placeholder="ENTER ACCESS CODE...">
+            <button onclick="unlockComments()">暗号解除</button>
         </div>
+
+        <section id="commentSection" class="hidden">
+            <div id="comments"></div>
+            <textarea id="newComment" placeholder="血文字を刻め..."></textarea>
+            <button onclick="postComment()">POST</button>
+        </section>
     </div>
+
+    <script>
+        // JavaScript will be in final block
+    </script>
 </body>
 </html>
