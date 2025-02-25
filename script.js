@@ -1,50 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('passwordInput');
     const loginButton = document.getElementById('loginButton');
-    const commentForm = document.getElementById('commentForm');
-    const commentsDiv = document.getElementById('comments');
-    const commentInput = document.getElementById('commentInput');
-    const postCommentButton = document.getElementById('postComment');
-    const showCommentsButton = document.getElementById('showComments');
-    const loginForm = document.getElementById('loginForm');
-    const password = "yourpassword"; // Replace with your password
+    const postForm = document.getElementById('postForm');
+    const postInput = document.getElementById('postInput');
+    const submitPostButton = document.getElementById('submitPost');
+    const postsDiv = document.getElementById('posts');
+    const password = "OldSunDie"; // Replace with your password
 
     let loggedIn = false;
 
     loginButton.addEventListener('click', () => {
         if (passwordInput.value === password) {
             loggedIn = true;
-            loginForm.style.display = 'none';
-            showCommentsButton.style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            postForm.style.display = 'block';
         } else {
-            alert('Incorrect password.');
+            alert('Do not try agin mf.');
         }
     });
 
-    showCommentsButton.addEventListener('click', () => {
-        showCommentsButton.style.display = 'none';
-        commentForm.style.display = 'block';
-        loadComments();
-    });
-
-    postCommentButton.addEventListener('click', () => {
-        const comment = commentInput.value;
-        if (comment) {
-            let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
-            existingComments.push(comment);
-            localStorage.setItem('comments', JSON.stringify(existingComments));
-            commentInput.value = '';
-            loadComments();
+    submitPostButton.addEventListener('click', () => {
+        if (loggedIn) {
+            const post = postInput.value;
+            if (post) {
+                let existingPosts = JSON.parse(localStorage.getItem('posts')) || [];
+                existingPosts.push(post);
+                localStorage.setItem('posts', JSON.stringify(existingPosts));
+                postInput.value = '';
+                loadPosts();
+                postForm.style.display = 'none';
+            }
         }
     });
 
-    function loadComments() {
-        commentsDiv.innerHTML = '';
-        const storedComments = JSON.parse(localStorage.getItem('comments')) || [];
-        storedComments.forEach(comment => {
-            const commentElement = document.createElement('p');
-            commentElement.textContent = comment;
-            commentsDiv.appendChild(commentElement);
+    function loadPosts() {
+        postsDiv.innerHTML = '';
+        const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+        storedPosts.forEach(post => {
+            const postElement = document.createElement('p');
+            postElement.textContent = post;
+            postsDiv.appendChild(postElement);
         });
     }
+
+    loadPosts(); // Load posts on page load
 });
