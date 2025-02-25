@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Network</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Ubuntu+Mono&display=swap');
+        
+        :root {
+            --cyber-green: #00ff9d;
+            --cyber-bg: #0a0a0a;
+        }
+
+        body {
+            background: var(--cyber-bg);
+            color: var(--cyber-green);
+            font-family: 'Ubuntu Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .cyber-border {
+            border: 3px solid var(--cyber-green);
+            position: relative;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px var(--cyber-green);
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 15px var(--cyber-green); }
+            50% { box-shadow: 0 0 25px var(--cyber-green); }
+        }
+
+        .telegram-info {
+            text-align: center;
+            padding: 20px;
+            background: #001a00;
+            margin-bottom: 30px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 25px;
+            padding: 20px 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .service-card {
+            scroll-snap-align: start;
+            min-width: 280px;
+            max-width: 400px;
+            background: #001100;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .telegram-button {
+            background: #001a00;
+            padding: 12px 25px;
+            border: 2px solid var(--cyber-green);
+            color: var(--cyber-green);
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 220px;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+
+        .donate-section {
+            background: #000033;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            2% { text-shadow: 3px 0 0 #ff00ff, -3px 0 0 #00ffff; }
+            4% { text-shadow: 3px 0 0 #ff00ff, -3px 0 0 #00ffff; }
+            96% { text-shadow: none; }
+        }
+
+        @media (max-width: 768px) {
+            .telegram-links {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0 10px;
+            }
+            
+            .telegram-button {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+
+        .telegram-button:active {
+            transform: scale(0.95);
+        }
+
+        .telegram-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0, 255, 157, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .telegram-button:active::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        ::-webkit-scrollbar {
+            height: 8px;
+            background: #001a00;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cyber-green);
+            border-radius: 4px;
+        }
+    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300ff9d%22>∅</text></svg>">
+</head>
+<body>
+    <div class="cyber-border telegram-info">
+        <h1 class="glitch">∅ Frenkie</h1>
+        <p>Username: BakedGod</p>
+        <p>Num id: 1738191336</p>
+        <p>Always Online</p>
+        <p>🟢 Verified</p>
+    </div>
+
+    <div class="cyber-border">
+        <h2 class="glitch">/// Secure Crypto Solutions</h2>
+        <p>█████████ Specialist in private financial transactions since 2016 █████████</p>
+        <p>✓ Blockchain anonymization ✓ Secure transfers ✓ Untraceable wallets</p>
+    </div>
+
+    <div class="services-grid">
+        <div class="cyber-border service-card">
+            <h3>Crypto Mixing</h3>
+            <p>3-7 layer transaction obfuscation</p>
+            <p>BTC/ETH/XMR supported</p>
+        </div>
+
+        <div class="cyber-border service-card">
+            <h3>IRR/USD Conversion</h3>
+            <p>Clean Crypto output</p>
+        </div>
+
+        <div class="cyber-border service-card">
+            <h3>Wallet Chaining</h3>
+            <p>Multi-hop transaction routing</p>
+            <p>On-chain/Off-chain mixing</p>
+        </div>
+    </div>
+
+    <div class="telegram-links">
+        <button class="cyber-border telegram-button" data-link="https://t.me/BakedGod">
+            CONTACT
+        </button>
+        <button class="cyber-border telegram-button" data-link="https://t.me/ZaZaPortaI">
+            LINKS
+        </button>
+        <button class="cyber-border telegram-button" data-link="https://t.me/ssaqi9">
+            PLAYList
+        </button>
+    </div>
+</div>
+
+    <script>
+        document.querySelectorAll('.telegram-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const link = this.dataset.link;
+                window.open(link, '_blank');
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+
+        function createFavicon() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32;
+            canvas.height = 32;
+            const ctx = canvas.getContext('2d');
+            ctx.font = '28px Arial';
+            ctx.fillStyle = '#00ff9d';
+            ctx.fillText('∅', 2, 28);
+            const link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = canvas.toDataURL();
+            document.head.appendChild(link);
+        }
+
+        window.onload = createFavicon;
+    </script>
+</body>
+</html>
