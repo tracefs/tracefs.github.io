@@ -1,25 +1,23 @@
 body {
-    font-family: sans-serif;
-    background-color: #f0e6d2;
-    color: #333;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    margin: 0;
     padding: 20px;
 }
 
-h1 {
-    color: #8b0000;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
+.terminal {
+    background-color: #222;
+    border: 1px solid #444;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow-x: auto; /* Allow horizontal scrolling if content overflows */
 }
 
 a {
-    color: #228b22;
+    color: #a0f; /* Purple links */
     text-decoration: none;
 }
 
@@ -27,6 +25,28 @@ a:hover {
     text-decoration: underline;
 }
 
+.prompt {
+    color: #f00; /* Red prompt */
+    margin: 5px 0;
+}
+
 textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
     width: 90%;
+    font-family: monospace;
+}
+
+button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
 }
