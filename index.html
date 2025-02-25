@@ -1,35 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ZaZaPortal</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCore</title>
+    <style>
+        :root {
+            --neon-cyan: #0ff;
+            --dark-bg: #0a0a0a;
+            --cyber-border: 1px solid var(--neon-cyan);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-cyan);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cyber-header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: var(--cyber-border);
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .telegram-feed {
+            border: var(--cyber-border);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .message {
+            padding: 1rem;
+            border-left: 3px solid var(--neon-cyan);
+            margin: 1rem 0;
+            background: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.05));
+        }
+
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--neon-cyan); }
+            to { text-shadow: 0 0 20px var(--neon-cyan); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            position: relative;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--neon-cyan);
+            transition: width 0.3s;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="terminal">
-        <p class="prompt">Frenkie@BakedGod:~# cat links.txt</p>
-        <div id="linkList">
-            <a href="BakedGod.t.me">Private</a><br>
-            <a href="ssaqi9.t.me">PlayLost</a><br>
-            <a href="ZaZaPortal.t.me">Other links</a><br>
-        </div>
+    <div class="container">
+        <header class="cyber-header">
+            <h1 class="glow">CYBER//CORE</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#feed">Feed</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
 
-        <p class="prompt">Frenkie@BakedGod:~# cat message.txt</p>
-        <div id="posts"></div>
+        <section id="about">
+            <h2>> about.dat</h2>
+            <p>Welcome to the encrypted nexus. We are the digital resistance.</p>
+            <p>Operating in the shadows since 2077. Specializing in cyber security, neural networks, and decentralized systems.</p>
+        </section>
 
-        <p class="prompt">Frenkie@BakedGod:~# post -m "Your Message"</p>
-        <div id="postForm" style="display: none;">
-            <textarea id="postInput" rows="4" cols="50"></textarea><br>
-            <button id="submitPost">SendMessage</button>
-        </div>
-
-        <div id="loginForm">
-            <input type="password" id="passwordInput" placeholder="Password">
-            <button id="loginButton">Login</button>
-        </div>
-
-        <p class="prompt">Frenkie@BakedGod:~#</p>
+        <section id="feed">
+            <h2>> live_feed.telegram</h2>
+            <div class="telegram-feed" id="telegram-feed">
+                <!-- Messages will be loaded here -->
+            </div>
+        </section>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Telegram feed configuration
+        const TELEGRAM_CHANNEL = '@yourchannelname';
+        const MESSAGE_LIMIT = 10;
+
+        async function fetchTelegramMessages() {
+            try {
+                const response = await fetch(`/telegram-feed?channel=${TELEGRAM_CHANNEL}&limit=${MESSAGE_LIMIT}`);
+                const messages = await response.json();
+                
+                const feedContainer = document.getElementById('telegram-feed');
+                feedContainer.innerHTML = messages.map(msg => `
+                    <div class="message">
+                        <div class="message-time">[${new Date(msg.date).toLocaleString()}]</div>
+                        <div class="message-text">${msg.text}</div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error fetching Telegram messages:', error);
+            }
+        }
+
+        // Fetch messages every 30 seconds
+        fetchTelegramMessages();
+        setInterval(fetchTelegramMessages, 30000);
+    </script>
 </body>
 </html>
