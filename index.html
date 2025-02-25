@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eastern European Links</title>
+    <title>ZaZaPortal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Eastern European Links</h1>
-    <ul id="linkList">
-        <li><a href="https://example.com/recipes">Eastern European Recipes</a></li>
-        <li><a href="https://example.com/gallery">Folk Art Gallery</a></li>
-        <li><a href="https://example.com/travel">Travel in Eastern Europe</a></li>
-    </ul>
-
-    <div id="commentSection">
-        <h2>Comments</h2>
-        <div id="comments"></div>
-        <div id="commentForm" style="display: none;">
-            <textarea id="commentInput" rows="4" cols="50"></textarea><br>
-            <button id="postComment">Post</button>
+    <div class="terminal">
+        <p class="prompt">Frenkie@BakedGod:~# cat links.txt</p>
+        <div id="linkList">
+            <a href="BakedGod.t.me">Private</a><br>
+            <a href="ssaqi9.t.me">PlayLost</a><br>
+            <a href="ZaZaPortal.t.me">Other links</a><br>
         </div>
+
+        <p class="prompt">Frenkie@BakedGod:~# cat message.txt</p>
+        <div id="posts"></div>
+
+        <p class="prompt">Frenkie@BakedGod:~# post -m "Your Message"</p>
+        <div id="postForm" style="display: none;">
+            <textarea id="postInput" rows="4" cols="50"></textarea><br>
+            <button id="submitPost">SendMessage</button>
+        </div>
+
         <div id="loginForm">
             <input type="password" id="passwordInput" placeholder="Password">
             <button id="loginButton">Login</button>
         </div>
-        <button id="showComments" style="display: none;">Show Comments</button>
+
+        <p class="prompt">Frenkie@BakedGod:~#</p>
     </div>
 
     <script src="script.js"></script>
