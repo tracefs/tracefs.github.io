@@ -2,240 +2,151 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZaZaPortal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>CyberExchange █▓▒░</title>
     <style>
-        :root {
-            --neon-cyan: #0ff;
-            --dark-bg: #0a0a0a;
-            --cyber-border: 1px solid var(--neon-cyan);
-            --cyber-shadow: 0 0 15px var(--neon-cyan);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Courier New', monospace;
-        }
-
         body {
-            background-color: var(--dark-bg);
-            color: var(--neon-cyan);
-            min-height: 100vh;
-            line-height: 1.6;
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            animation: glow 2s infinite alternate;
         }
 
-        .cyber-header {
-            text-align: center;
-            padding: 2rem 0;
-            margin-bottom: 3rem;
+        .account-info {
+            background: linear-gradient(45deg, #001100, #003300);
+            padding: 20px;
+            border: 1px solid #0f0;
+            margin-bottom: 30px;
             position: relative;
+            animation: pulse 3s infinite;
         }
 
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: var(--cyber-border);
-            box-shadow: var(--cyber-shadow);
-            margin: 1rem auto;
-            background: url('https://via.placeholder.com/150') center/cover;
-            position: relative;
-            transition: transform 0.3s;
+        .bio {
+            border-left: 3px solid #0f0;
+            padding-left: 15px;
+            margin: 30px 0;
+            animation: fadeIn 2s;
         }
 
-        .avatar:hover {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        .cyber-title {
-            text-shadow: 0 0 10px var(--neon-cyan);
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        .cyber-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 2px;
-            background: var(--neon-cyan);
-            box-shadow: var(--cyber-shadow);
-        }
-
-        .grid {
+        .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
         }
 
-        .cyber-card {
-            border: var(--cyber-border);
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            position: relative;
-            transition: box-shadow 0.3s;
+        .service-item {
+            background: #002200;
+            padding: 15px;
+            border: 1px solid #0f0;
+            transition: all 0.3s;
+            animation: slideIn 1s forwards;
         }
 
-        .cyber-card:hover {
-            box-shadow: var(--cyber-shadow);
+        .service-item:hover {
+            background: #004400;
+            transform: translateX(10px);
         }
 
-        .links-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+        .cyber-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
         }
 
         .cyber-link {
-            padding: 1rem;
-            border: var(--cyber-border);
-            text-align: center;
+            color: #0f0;
             text-decoration: none;
-            color: var(--neon-cyan);
+            border: 1px solid #0f0;
+            padding: 10px 20px;
             position: relative;
-            overflow: hidden;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
 
         .cyber-link:hover {
-            background: rgba(0, 255, 255, 0.1);
+            background: #0f0;
+            color: #000;
+            transform: scale(1.1);
         }
 
-        .cyber-link::before {
-            content: '>';
-            position: absolute;
-            left: -20px;
-            transition: left 0.3s;
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #0f0; }
+            to { box-shadow: 0 0 20px #0f0; }
         }
 
-        .cyber-link:hover::before {
-            left: 10px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
-        .skill-list {
-            list-style: none;
-            padding: 0;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .skill-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed var(--neon-cyan);
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+        h1, h2 {
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
         }
 
-        .social-links a {
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        @keyframes scanline {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
-        }
-
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom,
-                transparent 50%,
-                rgba(0, 255, 255, 0.05) 51%,
-                transparent 51%);
-            pointer-events: none;
-            animation: scanline 5s linear infinite;
-            z-index: 999;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .avatar {
-                width: 100px;
-                height: 100px;
-            }
+        ::selection {
+            background: #0f0;
+            color: #000;
         }
     </style>
 </head>
 <body>
-    <div class="scanline"></div>
     <div class="container">
-        <header class="cyber-header">
-            <div class="avatar"></div>
-            <h1 class="cyber-title">Frenkie</h1>
-            <p>// Error 404</p>
-        </header>
+        <div class="account-info">
+            <h1>▓▒░ CRYPTO VAULT ░▒▓</h1>
+            <p>BTC Wallet: <span style="color: #0f0">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span></p>
+            <p>Mixing Fee: 2%</p>
+            <p>Laundered Amount: █████ BTC</p>
+        </div>
 
-        <section class="grid">
-            <div class="cyber-card">
-                <h2>> bio.txt</h2>
-                <p>01000110 01110010 01101111 01101101 00100000 01110100 01101000 01100101 00100000 01100100 01101001 01100111 01101001 01110100 01100001 01101100 00100000 01110011 01101000 01100001 01100100 01101111 01110111 01110011</p>
-                <p>there's nothing to talk about it.</p>
-            </div>
+        <div class="bio">
+            <h2>// ANONYMOUS OPERATOR</h2>
+            <p>Professional crypto mixing services with guaranteed anonymity. 
+            Advanced blockchain obfuscation techniques. 
+            100% secure offshore transactions. 
+            No logs, no KYC, complete privacy.</p>
+        </div>
 
-            <div class="cyber-card">
-                <h2>> skills.dat</h2>
-                <ul class="skill-list">
-                    <li>c2c exchange</li>
-                    <li>Cleaning</li>
-                    <li>Brokerage</li></li>
-                </ul>
-            </div>
-        </section>
+        <div class="services">
+            <div class="service-item">Crypto Mixing</div>
+            <div class="service-item">Offshore Transfers</div>
+            <div class="service-item">Wallet Obfuscation</div>
+            <div class="service-item">Fiat Conversion</div>
+        </div>
 
-        <section class="cyber-card">
-            <h2>> network_links</h2>
-            <div class="links-section">
-                <a href="BakedGod.t.me" class="cyber-link">Private Message</a>
-                <a href="ssaqi9.t.me" class="cyber-link">Play List</a>
-                <a href="ZaZaPortal.t.me" class="cyber-link">Other Links</a>
-            </div>
-        </section>
-
-        <section class="cyber-card">
-            <h2>> system_status</h2>
-            <div class="links-section">
-                <div class="cyber-link">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>Firewall: Active</p>
-                </div>
-                <div class="cyber-link">
-                    <i class="fas fa-network-wired"></i>
-                    <p>VPN: Encrypted</p>
-                </div>
-                <div class="cyber-link">
-                    <i class="fas fa-lock"></i>
-                    <p>System: Secure</p>
-                </div>
-            </div>
-        </section>
+        <div class="cyber-links">
+            <a href="#contact" class="cyber-link">ENCRYPTED CONTACT</a>
+            <a href="#transactions" class="cyber-link">TRANSACTION HISTORY</a>
+            <a href="#security" class="cyber-link">SECURITY PROTOCOLS</a>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.service-item').forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
 </body>
 </html>
