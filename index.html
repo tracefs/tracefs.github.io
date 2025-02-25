@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Exchange Network</title>
+    <title>Exchange Network</title>
     <style>
         /* All previous CSS remains exactly the same */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Ubuntu+Mono&display=swap');
@@ -228,24 +228,41 @@
         // Generate random 8-character ID
         const generateId = () => Math.random().toString(36).slice(2,10).toUpperCase();
 
-        // Optimized vouch generation (1600 per year × 3 years = 4800)
-        const generateVouch = () => {
-            const vouchList = document.querySelector('.vouch-list');
-            const fragment = document.createDocumentFragment();
-            
-            for(let year = 2022; year <= 2024; year++) {
-                for(let i = 0; i < 1600; i++) {
-                    const div = document.createElement('div');
-                    div.className = 'vouch-item';
-                    div.innerHTML = `
-                        <p>${generateId()}: vouch @BakedGod ${100 + Math.random()*3900 | 0}$</p>
-                        <p>Date: ${year}-${String(Math.random()*12 +1 | 0).padStart(2,'0')}-${String(Math.random()*28 +1 | 0).padStart(2,'0')}</p>
-                    `;
-                    fragment.appendChild(div);
-                }
+        // Generate and sort vouches
+    const generateVouch = () => {
+        const vouchList = document.querySelector('.vouch-list');
+        const fragment = document.createDocumentFragment();
+        const allVouches = [];
+        
+        // Generate all vouch data first
+        for(let year = 2022; year <= 2024; year++) {
+            for(let i = 0; i < 1600; i++) {
+                const month = Math.floor(Math.random() * 12) + 1;
+                const day = Math.floor(Math.random() * 28) + 1;
+                allVouches.push({
+                    id: Math.random().toString(36).slice(2,10).toUpperCase(),
+                    amount: 100 + Math.floor(Math.random() * 3900),
+                    date: new Date(year, month - 1, day)
+                });
             }
-            vouchList.appendChild(fragment);
         }
+
+        // Sort by date descending
+        allVouches.sort((a, b) => b.date - a.date);
+
+        // Create DOM elements
+        allVouches.forEach(vouch => {
+            const div = document.createElement('div');
+            div.className = 'vouch-item';
+            div.innerHTML = `
+                <p>${vouch.id}: vouch @BakedGod ${vouch.amount}$</p>
+                <p>Date: ${vouch.date.getFullYear()}-${String(vouch.date.getMonth() + 1).padStart(2,'0')}-${String(vouch.date.getDate()).padStart(2,'0')}</p>
+            `;
+            fragment.appendChild(div);
+        });
+
+        vouchList.appendChild(fragment);
+    };
 
         // Section control
         const sections = {
