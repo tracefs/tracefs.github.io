@@ -1,7 +1,7 @@
 body {
-    background-color: #1a1a1a; /* Dark background */
-    color: #e0e0e0; /* Light text */
-    font-family: 'Spectral', serif; /* Evocative font */
+    background-color: #0c0c0c; /* Deeper dark background */
+    color: #bdbdbd; /* Muted light text */
+    font-family: 'Spectral', serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,63 +10,62 @@ body {
     min-height: 100vh;
 }
 
-.a, a:visited{
-    color: #b0c4de;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover{
-    color: #87ceeb;
-}
-
 .container {
-    width: 80%;
-    max-width: 800px;
-    background-color: #282828; /* Darker container background */
+    background-color: #1a1a1a; /* Darker container */
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Deeper shadow */
     text-align: center;
+    width: 80%;
+    max-width: 800px;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em; /* Slightly larger heading */
     margin-bottom: 10px;
-    color: #dcdcdc;
+    color: #cfcaca;
+    text-shadow: 1px 1px 2px #000; /* Subtle text shadow */
 }
 
 header .subtitle {
     font-style: italic;
-    color: #a9a9a9;
+    color: #8a8a8a;
     margin-bottom: 30px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    margin-bottom: 20px;
 }
 
 nav a {
     font-size: 1.2em;
     padding: 10px 20px;
-    border: 1px solid #444;
+    border: 1px solid #333; /* Darker border */
     border-radius: 5px;
     display: inline-block;
+    background-color: #222; /* Slightly darker link background */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #333;
+    color: #b0c4de;
+    border-color: #444;
 }
 
 footer {
     margin-top: 40px;
-    color: #777;
+    color: #666;
     font-size: 0.9em;
 }
 
 .footer-text::before{
     content: "—";
     margin-right: 5px;
+}
+
+a, a:visited{
+    color: #99a2b0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover{
+    color: #87ceeb;
 }
